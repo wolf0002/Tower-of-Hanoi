@@ -25,22 +25,28 @@ var myAudio1=document.getElementById("myAudio1");
 var myAudio2=document.getElementById("myAudio2");
 function initialiser()
 {
-	var xi=90;
+	var xi=198;
 	var yi=500;
-	var wi=220;
+	var wi=0;
 	ADiscs=[];
 	BDiscs=[];
 	CDiscs=[];
 	n=document.getElementById("inp").value;
-	for (var i = n; i >=1; i--) {
+	for (var i = 0; i <n; i++) {
 		var A=new Object();
-		xi=xi+10;
-		wi=wi-20;
+		xi=xi-15;
+		wi=wi+31;
 		A.x=xi;
 		A.y=yi;
 		A.w=wi;
 		A.v=i;
 		ADiscs.push(A);
+	}
+	for (var i = 0; i <n/2; i++) {
+		var t=new Object();
+		t=ADiscs[i];
+		ADiscs[i]=ADiscs[n-i-1];
+		ADiscs[n-i-1]=t;
 	}
 }
 canvas1.addEventListener("click",function(e)
@@ -109,14 +115,15 @@ function draw1()
 	ctx1.closePath();
 	for (var i = 1; i <=ADiscs.length; i++) {
 		ctx1.beginPath();
-		ctx1.rect(ADiscs[i-1].x, canvas1.height-i*30, ADiscs[i-1].w, 28);
+		ctx1.rect(ADiscs[i-1].x, canvas1.height-i*20, ADiscs[i-1].w, 20);
 		ctx1.fillStyle="#03a9fc";
 		ctx1.fill();
 		ctx1.closePath();
 		ctx1.beginPath();
-		ctx1.font="26px Arial";
-		ctx1.fillStyle="black";
-		ctx1.fillText(ADiscs[i-1].v,ADiscs[i-1].x+4,canvas1.height+26-i*30);
+		ctx1.strokeStyle="black";
+		ctx1.lineWidth="1";
+		ctx1.rect(ADiscs[i-1].x, canvas1.height-i*20, ADiscs[i-1].w, 20);
+		ctx1.stroke();
 		ctx1.closePath();
 	}
 	ctx1.beginPath();
@@ -155,14 +162,15 @@ function draw2()
 	ctx2.closePath();
 	for (var i = 1; i <=BDiscs.length; i++) {
 		ctx2.beginPath();
-		ctx2.rect(BDiscs[i-1].x, canvas2.height-i*30, BDiscs[i-1].w, 28);
+		ctx2.rect(BDiscs[i-1].x, canvas2.height-i*20, BDiscs[i-1].w, 20);
 		ctx2.fillStyle="#03a9fc";
 		ctx2.fill();
 		ctx2.closePath();
 		ctx2.beginPath();
-		ctx2.font="26px Arial";
-		ctx2.fillStyle="black";
-		ctx2.fillText(BDiscs[i-1].v,BDiscs[i-1].x+4,canvas2.height+26-i*30);
+		ctx2.strokeStyle="black";
+		ctx2.lineWidth="1";
+		ctx2.rect(BDiscs[i-1].x, canvas2.height-i*20, BDiscs[i-1].w, 20);
+		ctx2.stroke();
 		ctx2.closePath();
 	}
 	ctx2.beginPath();
@@ -201,14 +209,15 @@ function draw3()
 	ctx3.closePath();
 	for (var i = 1; i <=CDiscs.length; i++) {
 		ctx3.beginPath();
-		ctx3.rect(CDiscs[i-1].x, canvas3.height-i*30, CDiscs[i-1].w, 28);
+		ctx3.rect(CDiscs[i-1].x, canvas3.height-i*20, CDiscs[i-1].w, 20);
 		ctx3.fillStyle="#03a9fc";
 		ctx3.fill();
 		ctx3.closePath();
 		ctx3.beginPath();
-		ctx3.font="26px Arial";
-		ctx3.fillStyle="black";
-		ctx3.fillText(CDiscs[i-1].v,CDiscs[i-1].x+4,canvas3.height+26-i*30);
+		ctx3.strokeStyle="black";
+		ctx3.lineWidth="1";
+		ctx3.rect(CDiscs[i-1].x, canvas2.height-i*20, CDiscs[i-1].w, 20);
+		ctx3.stroke();
 		ctx3.closePath();
 	}
 	ctx3.beginPath();
